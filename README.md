@@ -37,8 +37,8 @@ std_img = sess.run(std_img_op) #calculate the standard deviation using your sess
 sess.run(subtraction/std_img)
 ```
 
-| ---------------------- | -------------------- |
-|          Mean          |  Standard deviation  |
+| -------------------------------- | ------------------------------- |
+|          Mean                    |  Standard deviation             |
 | ![Mean Dataset](/Images/mean.png)| ![Std Dataset](/Images/std.png) |
 
 Now lets plot normalized dataset :
@@ -93,9 +93,9 @@ Now we teach our network to go from the location on an image frame to a particul
 
 Consider our reference picture and gif results what we get after 500 interpolations:
 
-| -------------------------------- | ---------------------------- |
-|        Reference picture         |            Result            |
-| ![Reference](/Images/reference.png) | ![Single](/Images/single1.png)|
+| ----------------------------------- | ------------------------------- |
+|        Reference picture            |            Result               |
+| ![Reference](/Images/reference.png) | ![Single](/Images/single1.gif)  |
 
 Now we apply the same approach to paint every single image in our bear-dataset with 100 images.  In order to find the best way now we could for instance feed in every possible image by having multiple row, col -> r, g, b values. So for any given row, col, we'd have 100 possible r, g, b values. This likely won't work very well as there are many possible values a pixel could take, not just one.
 
@@ -126,9 +126,9 @@ def deprocess(norm_img, ds):
 
 Let's have a look what the network learns to encode first, based on what it is able to reconstruct. It won't able to reconstruct everything. At first, it will just be the mean image. Then, other major changes in the dataset. From the basic interpretation, you can reason that the autoencoder has learned a representation of the backgrounds, and is able to encode that knowledge of the background in its inner most layer of just two values. It then goes on to represent the major variations in bear position. So the features it is able to encode tend to be the major things at first, then the smaller things. With 2000 (with bigger number I run into memoty problems) iterations we receive the following reconstructed picture.
 
-| ---------------------- | ------------------------ |
-|    Original picture    |  Reconstructed picture   |
-| ![test](/Images/test.png) | ![Reconstructed](/Images/recon.png) |
+| ---------------------------| ----------------------------------- |
+|    Original picture        |  Reconstructed picture              |
+| ![test](/Images/test.png)  | ![Reconstructed](/Images/recon.png) |
 
 ### Convolutional Autoencoder
 
@@ -136,7 +136,7 @@ To get even better encodings, we can also try building a convolutional network. 
 
 In a convolutional model, we're explicitly modeling what happens around a pixel. And we're using the exact same convolutions no matter where in the image we are. But we're going to use a lot of different convolutions. Let see the results of latent manifold and  the reconstruction created by the encoder/variational encoder.
 
-| ------------------------------ | ---------------------------------------- |
+| --------------------------------- | ------------------------------------------- |
 | ![Manifold](/Images/Manifold.gif) | ![Reconstructed](/Images/Reconstructed.gif) |
 
 ### Denoising Autoencoder[¶](http://localhost:8888/notebooks/CADL/session-3/lecture-3.ipynb#Denoising-Autoencoder)
@@ -156,13 +156,13 @@ We'll now get the graph from the storage container, and tell tensorflow to use t
 
 Some of the first visualizations to come out would infinitely zoom into the image, creating a fractal image of the deep dream. We can do this by cropping the image with a 1 pixel border, and then resizing that image back to the original size. This can produce some lovely aesthetics and really show some strong object hallucinations if left long enough and with the right parameters for step size/normalization/regularization.
 
-![[softmax.gif|softmax.gif]]    ![[fractal.gif|fractal.gif]]
+![softmax](/Images/softmax.gif)   ![fractal](/Images/fractal.gif) 
 
 ### Guided Hallucinations
 
 Instead of following the gradient of an arbitrary mean or max of a particular layer's activation, or a particular object that we want to synthesize, we can also try to guide our image to look like another image. One way to try this is to take one image, the guide, and find the features at a particular layer or layers. Then, we take our synthesis image and find the gradient which makes its own layers activations look like the guide image. We will now use a measure which measures the pixel to pixel difference of neighboring pixels. What we're doing when we try to optimize a gradient that makes the mean differences small is saying, we want the difference to be low. This allows us to smooth our image. Let see our original images and the resulting one.
 
-| ------------------------------------------------------------------------ | ------------------------------------ | ---------------------------- |
+ ------------------------------------------------------------------------ | ------------------------------------ | ---------------------------- |
 | ![sandy](/Images/sandy-millar-1079467-unsplash.jpg) | ![Bear](/Images/Bear-Animal.jpg) | ![Guided](/Images/guided1.gif) |
 
 ### Style Net
