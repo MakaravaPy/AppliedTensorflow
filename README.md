@@ -39,11 +39,11 @@ sess.run(subtraction/std_img)
 
 | ---------------------- | -------------------- |
 |          Mean          |  Standard deviation  |
-| ![[mean.png|mean.png]] | ![[std.png|std.png]] |
+| ![Mean Dataset](/Images/mean.png)| ![Std Dataset](/Images/std.png) |
 
 Now lets plot normalized dataset :
 
-![[normalized1.png|normalized1.png]]
+![Normalized Dataset](/Images/normalaized1.png)
 
 Tensorflow has a basic structure which is called placeholder. A placeholder is simply a variable that we will assign data to at a later date,  meaning, we're not sure what these are yet. It allows us to create our operations and build our computation graph, without needing the data, but we know they'll fit in the graph like so. Generally it is the input and output of the network. In TensorFlow terminology, we then feed data into the graph through these placeholders.  
 Lets define a placeholder:
@@ -95,15 +95,15 @@ Consider our reference picture and gif results what we get after 500 interpolati
 
 | -------------------------------- | ---------------------------- |
 |        Reference picture         |            Result            |
-| ![[reference.png|reference.png]] | ![[single1.gif|single1.gif]] |
+| ![Reference](/Images/reference.png) | ![Single](/Images/single1.png)|
 
 Now we apply the same approach to paint every single image in our bear-dataset with 100 images.  In order to find the best way now we could for instance feed in every possible image by having multiple row, col -> r, g, b values. So for any given row, col, we'd have 100 possible r, g, b values. This likely won't work very well as there are many possible values a pixel could take, not just one.
 
-![[multiple1.gif|multiple1.gif]]
+![Multiple](/Images/multiple1.gif)
 
 What we're seeing is the training process over time. We feed in our input positios, which consist of the pixel values of each of our 100 images, it goes through the neural network, and out come predicted color values for every possible input value. We visualize it above as a gif by seeing how at each iteration the network has predicted the entire space of the inputs. We can visualize just the last iteration as a "latent" space, going from the first image (the top left image in the montage), to the last image, (the bottom right image).
 
-![[final1.gif|final1.gif]]
+![final](/Images/final1.gif)
 
 ## Unsupervised and Supervised Learning
 
@@ -128,7 +128,7 @@ Let's have a look what the network learns to encode first, based on what it is a
 
 | ---------------------- | ------------------------ |
 |    Original picture    |  Reconstructed picture   |
-| ![[test.png|test.png]] | ![[recon.png|recon.png]] |
+| ![test](/Images/test.png) | ![Reconstructed](/Images/recon.png) |
 
 ### Convolutional Autoencoder
 
@@ -137,7 +137,7 @@ To get even better encodings, we can also try building a convolutional network. 
 In a convolutional model, we're explicitly modeling what happens around a pixel. And we're using the exact same convolutions no matter where in the image we are. But we're going to use a lot of different convolutions. Let see the results of latent manifold and  the reconstruction created by the encoder/variational encoder.
 
 | ------------------------------ | ---------------------------------------- |
-| ![[Manifold.gif|Manifold.gif]] | ![[Reconstructed.gif|Reconstructed.gif]] |
+| ![Manifold](/Images/Manifold.gif) | ![Reconstructed](/Images/Reconstructed.gif) |
 
 ### Denoising Autoencoder[¶](http://localhost:8888/notebooks/CADL/session-3/lecture-3.ipynb#Denoising-Autoencoder)
 
@@ -163,7 +163,7 @@ Some of the first visualizations to come out would infinitely zoom into the imag
 Instead of following the gradient of an arbitrary mean or max of a particular layer's activation, or a particular object that we want to synthesize, we can also try to guide our image to look like another image. One way to try this is to take one image, the guide, and find the features at a particular layer or layers. Then, we take our synthesis image and find the gradient which makes its own layers activations look like the guide image. We will now use a measure which measures the pixel to pixel difference of neighboring pixels. What we're doing when we try to optimize a gradient that makes the mean differences small is saying, we want the difference to be low. This allows us to smooth our image. Let see our original images and the resulting one.
 
 | ------------------------------------------------------------------------ | ------------------------------------ | ---------------------------- |
-| ![[sandy-millar-1079467-unsplash.jpg|sandy-millar-1079467-unsplash.jpg]] | ![[Bear-Animal.jpg|Bear-Animal.jpg]] | ![[guided1.gif|guided1.gif]] |
+| ![sandy](/Images/sandy-millar-1079467-unsplash.jpg) | ![Bear](/Images/Bear-Animal.jpg) | ![Guided](/Images/guided1.gif) |
 
 ### Style Net
 
@@ -178,12 +178,10 @@ loss function which tries to optimize the distance between the net's output at o
 Finally, with both content and style losses, we can combine the two, optimizing our loss function, and creating a stylized soft bear (3d picture).
 
 | ------------------------------------------------------------------------ | -------------------------------------------------- | ---------------------------------- |
-| ![[sandy-millar-1079467-unsplash.jpg|sandy-millar-1079467-unsplash.jpg]] | ![[look.com.ua-125806.jpg|look.com.ua-125806.jpg]] | ![[1stylenet1.gif|1stylenet1.gif]] |
+|![sandy-millar](/Images/sandy-millar-1079467-unsplash.jpg) | ![look](/Images/look.com.ua-125806.jpg) | ![1stylenet](/Images/1stylenet.gif)|
 
 As well we can play other way around with style and content pictures:[Kadenze Academy](https://www.kadenze.com/partners/kadenze-academy) courses on [Creative Applications of Deep Learning w/ Tensorflow.](https://www.kadenze.com/courses/creative-applications-of-deep-learning-with-tensorflow/info)
-
-![[1stylenet.gif|1stylenet.gif]]
-
+ ![1stylenet](/Images/1stylenet1.gif)|
 ## Next challenge:
 
 Generative Adversarial Networks (GAN)
