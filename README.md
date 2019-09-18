@@ -23,7 +23,7 @@ imgs = np.array(imgs).astype(np.float32) # make list of 3-D images a 4-D array
 plt.figure(figsize=(10, 10)) # plot the resulting dataset
 ```
 
-![[dataset.png|dataset.png]]
+![[dataset.png|Images/dataset.png]]
 
 So, we have 100 pictures of bears. Now calculate the mean and standard deviation:
 
