@@ -22,8 +22,7 @@ imgs = [resize(img_i, (100, 100)) for img_i in imgs] #resize the square image to
 imgs = np.array(imgs).astype(np.float32) # make list of 3-D images a 4-D array 
 plt.figure(figsize=(10, 10)) # plot the resulting dataset
 ```
-
-![[dataset.png|Images/dataset.png]]
+![Original Dataset](/Images/dataset.png)
 
 So, we have 100 pictures of bears. Now calculate the mean and standard deviation:
 
@@ -140,6 +139,6 @@ In a convolutional model, we're explicitly modeling what happens around a pixel.
 | ------------------------------ | ---------------------------------------- |
 | ![[Manifold.gif|Manifold.gif]] | ![[Reconstructed.gif|Reconstructed.gif]] |
 
-### Denoising Autoencoder[¶](http://localhost:8888/notebooks/CADL/session-3/lecture-3.ipynb#Denoising-Autoencoder)
+### Denoising Autoencoder[Â¶](http://localhost:8888/notebooks/CADL/session-3/lecture-3.ipynb#Denoising-Autoencoder)
 
 The denoising autoencoder is a very simple extension to an autoencoder. Instead of seeing the input, it is corrupted, for instance by masked noise. but the reconstruction loss is still measured on the original uncorrupted image. What this does is lets the model try to interpret occluded or missing parts of the thing it is reasoning about. It would make sense for many models, that not every datapoint in an input is necessary to understand what is going on. Denoising autoencoders try to enforce that, and as a result, the encodings at the middle most layer are often far more representative of the actual classes of different objects.
