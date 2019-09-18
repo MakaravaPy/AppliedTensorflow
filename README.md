@@ -177,7 +177,10 @@ Finally, with both content and style losses, we can combine the two, optimizing 
 ![sandy-millar](/Images/sandy-millar-1079467-unsplash.jpg)  ![look](/Images/look.com.ua-125806.jpg)  ![1stylenet](/Images/1stylenet.gif)|
 
 As well we can play other way around with style and content pictures:[Kadenze Academy](https://www.kadenze.com/partners/kadenze-academy) courses on [Creative Applications of Deep Learning w/ Tensorflow.](https://www.kadenze.com/courses/creative-applications-of-deep-learning-with-tensorflow/info)
+
+
  ![1stylenet](/Images/1stylenet1.gif)|
+
 ## Next challenge:
 
 Generative Adversarial Networks (GAN)
